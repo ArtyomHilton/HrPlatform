@@ -8,5 +8,10 @@
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" />
     <PackageReference Include="Swashbuckle.AspNetCore" />
   </ItemGroup>
+	
+  <ItemGroup>
+    <ProjectReference Include="..\HrPlatform.Application\HrPlatform.Application.csproj" />
+    <ProjectReference Include="..\HrPlatform.Infrastructure.Persistence.Postgre\HrPlatform.Infrastructure.Persistence.Postgre.csproj" />
+  </ItemGroup>
 
 </Project>

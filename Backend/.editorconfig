@@ -10,6 +10,7 @@ indent_size = 2
 
 # C# files
 [*.cs]
+csharp_style_namespace_declarations=file_scoped:suggestion
 
 #### Core EditorConfig Options ####
 
@@ -186,10 +187,6 @@ csharp_preserve_single_line_blocks = true
 csharp_preserve_single_line_statements = true
 
 #### Naming styles ####
-
-# CA2007: Попробуйте вызвать ConfigureAwait для ожидаемой задачи
-dotnet_diagnostic.CA2007.severity = none
-
 [*.{cs,vb}]
 
 # Naming rules
@@ -379,3 +376,6 @@ dotnet_naming_style.s_camelcase.required_prefix = s_
 dotnet_naming_style.s_camelcase.required_suffix = 
 dotnet_naming_style.s_camelcase.word_separator = 
 dotnet_naming_style.s_camelcase.capitalization = camel_case
+
+dotnet_diagnostic.CA1062.severity = none
+dotnet_diagnostic.CA2007.severity = none
