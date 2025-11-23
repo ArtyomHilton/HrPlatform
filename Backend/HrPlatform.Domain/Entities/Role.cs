@@ -5,12 +5,12 @@ namespace HrPlatform.Domain.Entities;
 /// <summary>
 /// Роль.
 /// </summary>
-public class Role : ITimestampEntity<short>
+public class Role : ITimestampEntity<int>
 {
     /// <summary>
     /// <inheritdoc />
     /// </summary>
-    public short Id { get; set; }
+    public int Id { get; set; }
 
     /// <summary>
     /// Название.
@@ -31,4 +31,9 @@ public class Role : ITimestampEntity<short>
     /// <inheritdoc />
     /// </summary>
     public DateTime UpdatedAt { get; set; }
+
+    /// <summary>
+    /// Навигационное свойство к UserRole.
+    /// </summary>
+    public ICollection<UserRole> UserRoles { get; set; } = new List<UserRole>();
 }

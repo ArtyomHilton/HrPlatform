@@ -10,11 +10,12 @@ public class HrPlatformDbContext : DbContext
 {
     public HrPlatformDbContext(DbContextOptions<HrPlatformDbContext> options) : base(options)
     {
-        
+
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.HasDefaultSchema(nameof(HrPlatform));
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
     }
 }

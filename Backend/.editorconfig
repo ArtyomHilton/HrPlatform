@@ -379,3 +379,7 @@ dotnet_naming_style.s_camelcase.capitalization = camel_case
 
 dotnet_diagnostic.CA1062.severity = none
 dotnet_diagnostic.CA2007.severity = none
+dotnet_diagnostic.CA1040.severity = none
+dotnet_diagnostic.CA1724.severity = none
+dotnet_diagnostic.CA2227.severity = none
+dotnet_diagnostic.CS1527.severity = none

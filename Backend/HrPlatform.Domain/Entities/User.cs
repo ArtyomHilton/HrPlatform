@@ -13,6 +13,21 @@ public class User : ITimestampEntity<Guid>
     public Guid Id { get; set; }
 
     /// <summary>
+    /// Имя пользователя.
+    /// </summary>
+    public string Username { get; set; } = string.Empty;
+
+    /// <summary>
+    /// Электронная почта.
+    /// </summary>
+    public string Email { get; set; } = string.Empty;
+
+    /// <summary>
+    /// Хэш пароля.
+    /// </summary>
+    public string PasswordHash { get; set; } = string.Empty;
+
+    /// <summary>
     /// <inheritdoc />
     /// </summary>
     public Guid Version { get; set; }
@@ -26,4 +41,9 @@ public class User : ITimestampEntity<Guid>
     /// <inheritdoc />
     /// </summary>
     public DateTime UpdatedAt { get; set; }
+
+    /// <summary>
+    /// Навигационное свойство к UserRole.
+    /// </summary>
+    public ICollection<UserRole> UserRoles { get; set; } = new List<UserRole>();
 }
