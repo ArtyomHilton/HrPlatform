@@ -1,10 +1,11 @@
 using HrPlatform.Infrastructure.Persistence.Postgre.Extensions;
+using HrPlatform.Web.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddContext(builder.Configuration);
+builder.Services.AddDependencyInjection(builder.Configuration);
 
 var app = builder.Build();
 

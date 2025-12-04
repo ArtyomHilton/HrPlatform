@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 
 namespace HrPlatform.Infrastructure.Persistence.Postgre.Extensions;
 
@@ -10,9 +11,6 @@ namespace HrPlatform.Infrastructure.Persistence.Postgre.Extensions;
 /// </summary>
 public static class DependencyInjection
 {
-    private const string ConnectionStringName = "POSTGRE_CONNECTION_STRING";
-    private const int RetryOnFailure = 10;
-
     /// <summary>
     /// Регистрирует контекст БД в DI.
     /// </summary>
@@ -21,11 +19,16 @@ public static class DependencyInjection
     /// <returns><see cref="IServiceCollection"/></returns>
     public static IServiceCollection AddContext(this IServiceCollection serviceCollection, IConfiguration configuration)
     {
-        serviceCollection.AddDbContext<HrPlatformDbContext>(options =>
+        serviceCollection.Configure<DatabaseOptions>(configuration.GetSection(nameof(DatabaseOptions)));
+        serviceCollection.AddSingleton<DatabaseOptions>(sp => sp.GetRequiredService<IOptions<DatabaseOptions>>().Value);
+
+        serviceCollection.AddDbContext<HrPlatformDbContext>((serviceProvider, options) =>
         {
-            options.UseNpgsql(configuration.GetConnectionString(ConnectionStringName), npgsqlOptions =>
+            var databaseOptions = serviceProvider.GetRequiredService<DatabaseOptions>();
+
+            options.UseNpgsql(databaseOptions.ConnectionString, npgsqlOptions =>
             {
-                npgsqlOptions.EnableRetryOnFailure(RetryOnFailure);
+                npgsqlOptions.EnableRetryOnFailure(databaseOptions.RetryOnFailure);
             });
         });
 

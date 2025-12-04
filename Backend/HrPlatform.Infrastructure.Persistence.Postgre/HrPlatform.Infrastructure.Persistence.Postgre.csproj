@@ -14,7 +14,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\HrPlatform.Application\HrPlatform.Application.csproj" />
-    <ProjectReference Include="..\HrPlatform.Domain\HrPlatform.Domain.csproj" />
   </ItemGroup>
 
 </Project>
