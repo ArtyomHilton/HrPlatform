@@ -6,4 +6,14 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\HrPlatform.Common\HrPlatform.Common.csproj" />
+    <ProjectReference Include="..\HrPlatform.Domain\HrPlatform.Domain.csproj" />
+    <ProjectReference Include="..\HrPlatform.MessageBus.RabbiMQ\HrPlatform.MessageBus.RabbitMQ.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="UseCases\" />
+  </ItemGroup>
+
 </Project>
