@@ -15,11 +15,7 @@
 	
   <ItemGroup>
     <ProjectReference Include="..\HrPlatform.Application\HrPlatform.Application.csproj" />
-    <ProjectReference Include="..\HrPlatform.Infrastructure.Persistence.Postgre\HrPlatform.Infrastructure.Persistence.Postgre.csproj" />
-  </ItemGroup>
-	
-  <ItemGroup>
-    <Folder Include="Endpoints\" />
+    <ProjectReference Include="..\HrPlatform.Infrastructure\HrPlatform.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

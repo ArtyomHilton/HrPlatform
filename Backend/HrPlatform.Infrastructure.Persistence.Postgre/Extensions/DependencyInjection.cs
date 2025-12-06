@@ -1,8 +1,9 @@
-﻿using HrPlatform.Infrastructure.Persistence.Postgre.Context;
-using Microsoft.EntityFrameworkCore;
+﻿using HrPlatform.Persistence.Postgre;
+using HrPlatform.Persistence.Postgre.Context;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
+using Microsoft.EntityFrameworkCore;
 
 namespace HrPlatform.Infrastructure.Persistence.Postgre.Extensions;
 
