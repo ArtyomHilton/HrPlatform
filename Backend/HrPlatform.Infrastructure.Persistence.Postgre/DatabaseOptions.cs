@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 
-namespace HrPlatform.Infrastructure.Persistence.Postgre;
+namespace HrPlatform.Persistence.Postgre;
 
 public class DatabaseOptions
 {

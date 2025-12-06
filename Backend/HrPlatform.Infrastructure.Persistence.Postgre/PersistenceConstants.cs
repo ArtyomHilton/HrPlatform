@@ -1,4 +1,4 @@
-﻿namespace HrPlatform.Infrastructure.Persistence.Postgre;
+﻿namespace HrPlatform.Persistence.Postgre;
 
 static class PersistenceConstants
 {

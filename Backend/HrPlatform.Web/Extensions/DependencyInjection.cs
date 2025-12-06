@@ -1,4 +1,5 @@
-﻿using HrPlatform.Infrastructure.Persistence.Postgre.Extensions;
+﻿using HrPlatform.Infrastructure.Extensions;
+using HrPlatform.Infrastructure.Persistence.Postgre.Extensions;
 using HrPlatform.MessageBus.RabbitMQ.Extensions;
 
 namespace HrPlatform.Web.Extensions;
@@ -16,6 +17,7 @@ public static class DependencyInjection
     private static IServiceCollection AddServices(this IServiceCollection serviceCollection, IConfiguration configuration)
     {
         serviceCollection.AddMessageBus(configuration);
+        serviceCollection.AddInfrastructureDependencyInjection();
 
         return serviceCollection;
     }

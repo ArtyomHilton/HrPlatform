@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace HrPlatform.Infrastructure.Persistence.Postgre.Configurations;
+namespace HrPlatform.Persistence.Postgre.Configurations;
 
 public class PermissionConfiguration : IEntityTypeConfiguration<Permission>
 {

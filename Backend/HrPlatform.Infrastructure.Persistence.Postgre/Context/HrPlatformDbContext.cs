@@ -1,7 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using HrPlatform.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
-namespace HrPlatform.Infrastructure.Persistence.Postgre.Context;
+namespace HrPlatform.Persistence.Postgre.Context;
 
 /// <summary>
 /// Контекст БД приложения.
@@ -18,4 +19,9 @@ public class HrPlatformDbContext : DbContext
         modelBuilder.HasDefaultSchema(nameof(HrPlatform));
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
     }
+
+    public DbSet<User> Users => Set<User>();
+    public DbSet<Role> Roles => Set<Role>();
+    public DbSet<UserRole> UserRoles => Set<UserRole>();
+    public DbSet<Permission> Permissions => Set<Permission>();
 }
