@@ -4,17 +4,12 @@
 /// Базовая сущность.
 /// </summary>
 /// <typeparam name="T">Любой тип данных для <see cref="Id"/></typeparam>
-public interface IEntity<T>
+public interface IEntity<T> : IEntity
 {
     /// <summary>
     /// Идентификатор.
     /// </summary>
     T Id { get; set; }
-
-    /// <summary>
-    /// Версия записи в БД.
-    /// </summary>
-    Guid Version { get; set; }
 }
 
 /// <summary>

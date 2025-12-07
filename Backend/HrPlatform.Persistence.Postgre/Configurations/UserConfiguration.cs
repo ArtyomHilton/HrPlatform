@@ -25,7 +25,7 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
         builder.Property(u => u.PasswordHash)
             .IsRequired();
 
-        builder.Property(u => u.Version)
+        builder.Property<uint>("Version")
             .IsRowVersion();
 
         builder.Property(u => u.CreatedAt)

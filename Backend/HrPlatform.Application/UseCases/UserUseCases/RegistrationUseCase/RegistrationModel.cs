@@ -22,6 +22,13 @@ public record RegistrationModel
     /// </summary>
     public string Email { get; set; } = null!;
 
+    public RegistrationModel(string username, string password, string email)
+    {
+        Username = username;
+        Password = password;
+        Email = email;
+    }
+
     public static explicit operator User(RegistrationModel model)
     {
         ArgumentNullException.ThrowIfNull(model);

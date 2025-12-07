@@ -1,4 +1,5 @@
-﻿using HrPlatform.Infrastructure.Extensions;
+﻿using HrPlatform.Application.Extensions;
+using HrPlatform.Infrastructure.Extensions;
 using HrPlatform.Infrastructure.Persistence.Postgre.Extensions;
 using HrPlatform.MessageBus.RabbitMQ.Extensions;
 
@@ -10,13 +11,14 @@ public static class DependencyInjection
     {
         serviceCollection.AddServices(configuration);
         serviceCollection.AddContext(configuration);
+        serviceCollection.AddApplicationDependencyInjection();
 
         return serviceCollection;
     }
 
     private static IServiceCollection AddServices(this IServiceCollection serviceCollection, IConfiguration configuration)
     {
-        serviceCollection.AddMessageBus(configuration);
+        //serviceCollection.AddMessageBus(configuration);
         serviceCollection.AddInfrastructureDependencyInjection();
 
         return serviceCollection;

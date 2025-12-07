@@ -17,7 +17,7 @@ public class RoleConfiguration : IEntityTypeConfiguration<Role>
         builder.HasIndex(r => r.Name)
             .IsUnique();
 
-        builder.Property(u => u.Version)
+        builder.Property<uint>("Version")
             .IsRowVersion();
 
         builder.Property(u => u.CreatedAt)

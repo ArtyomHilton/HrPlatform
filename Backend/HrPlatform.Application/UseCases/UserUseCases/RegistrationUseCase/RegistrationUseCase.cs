@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using HrPlatform.Application.Abstractions;
+﻿using HrPlatform.Application.Abstractions;
 using HrPlatform.Domain.Entities;
 using HrPlatform.Persistence.Postgre.Context;
 
