@@ -4,7 +4,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace HrPlatform.Infrastructure.Persistence.Postgre.Migrations
+namespace HrPlatform.Persistence.Postgre.Migrations
 {
     /// <inheritdoc />
     public partial class Initial : Migration
@@ -16,6 +16,22 @@ namespace HrPlatform.Infrastructure.Persistence.Postgre.Migrations
                 name: "HrPlatform");
 
             migrationBuilder.CreateTable(
+                name: "Permission",
+                schema: "HrPlatform",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Code = table.Column<string>(type: "text", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "NOW()"),
+                    UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "NOW()"),
+                    xmin = table.Column<uint>(type: "xid", rowVersion: true, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Permission", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Role",
                 schema: "HrPlatform",
                 columns: table => new
@@ -23,9 +39,9 @@ namespace HrPlatform.Infrastructure.Persistence.Postgre.Migrations
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Name = table.Column<string>(type: "text", nullable: false),
-                    Version = table.Column<Guid>(type: "uuid", rowVersion: true, nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "NOW()"),
-                    UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "NOW()")
+                    UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "NOW()"),
+                    xmin = table.Column<uint>(type: "xid", rowVersion: true, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -41,9 +57,9 @@ namespace HrPlatform.Infrastructure.Persistence.Postgre.Migrations
                     Username = table.Column<string>(type: "text", nullable: false),
                     Email = table.Column<string>(type: "text", nullable: false),
                     PasswordHash = table.Column<string>(type: "text", nullable: false),
-                    Version = table.Column<Guid>(type: "uuid", rowVersion: true, nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "NOW()"),
-                    UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "NOW()")
+                    UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "NOW()"),
+                    xmin = table.Column<uint>(type: "xid", rowVersion: true, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -78,6 +94,13 @@ namespace HrPlatform.Infrastructure.Persistence.Postgre.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Permission_Code",
+                schema: "HrPlatform",
+                table: "Permission",
+                column: "Code",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Role_Name",
                 schema: "HrPlatform",
                 table: "Role",
@@ -108,6 +131,10 @@ namespace HrPlatform.Infrastructure.Persistence.Postgre.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Permission",
+                schema: "HrPlatform");
+
             migrationBuilder.DropTable(
                 name: "UserRole",
                 schema: "HrPlatform");

@@ -1,6 +1,7 @@
 ﻿using HrPlatform.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace HrPlatform.Persistence.Postgre.Configurations;
 
@@ -17,7 +18,7 @@ public class PermissionConfiguration : IEntityTypeConfiguration<Permission>
         builder.HasIndex(x => x.Code)
             .IsUnique();
 
-        builder.Property(u => u.Version)
+        builder.Property<uint>("Version")
             .IsRowVersion();
 
         builder.Property(u => u.CreatedAt)

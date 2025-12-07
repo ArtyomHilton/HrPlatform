@@ -20,11 +20,6 @@ public class Role : ITimestampEntity<int>
     /// <summary>
     /// <inheritdoc />
     /// </summary>
-    public Guid Version { get; set; }
-
-    /// <summary>
-    /// <inheritdoc />
-    /// </summary>
     public DateTime CreatedAt { get; set; }
 
     /// <summary>

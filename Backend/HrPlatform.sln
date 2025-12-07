@@ -20,7 +20,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HrPlatform.Domain", "HrPlat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HrPlatform.Application", "HrPlatform.Application\HrPlatform.Application.csproj", "{0FB7027E-63C8-42D0-B696-AFD98B39298E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HrPlatform.Persistence.Postgre", "HrPlatform.Infrastructure.Persistence.Postgre\HrPlatform.Persistence.Postgre.csproj", "{D7DBB891-B2D5-4A75-9A92-D147A63180ED}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HrPlatform.Persistence.Postgre", "HrPlatform.Persistence.Postgre\HrPlatform.Persistence.Postgre.csproj", "{D7DBB891-B2D5-4A75-9A92-D147A63180ED}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HrPlatform.MessageBus.RabbitMQ", "HrPlatform.MessageBus.RabbiMQ\HrPlatform.MessageBus.RabbitMQ.csproj", "{2250BC81-1863-4463-ADE3-AE633412946D}"
 EndProject
