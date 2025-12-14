@@ -21,6 +21,8 @@ public class GlobalExceptionHandlerMiddleware : IExceptionHandler
             Exception => CreateProblemDetails(exception.GetType().Name, exception.Message, StatusCodes.Status500InternalServerError, exception.HelpLink)
         };
 
+        _logger.LogError("Application error: {ErrorType} | Message {Message}", exception.GetType().Name, exception.Message);
+
         await httpContext.Response.WriteAsJsonAsync(problemDetails, cancellationToken);
 
         return true;
