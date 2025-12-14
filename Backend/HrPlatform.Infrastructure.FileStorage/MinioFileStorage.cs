@@ -17,17 +17,42 @@ class MinioFileStorage : IFileStorage
         _logger = logger;
     }
 
-    public async Task PutFile(string bucketName, string objectName, string fileName, CancellationToken cancellationToken = default)
+    public async Task<bool> PutFile(string bucketName, string objectName, Stream fileStream, CancellationToken cancellationToken = default)
     {
-        var args = new PutObjectArgs()
+        if (!await BucketExist(bucketName, cancellationToken))
+        {
+            await CreateBucket(bucketName, cancellationToken);
+        }
+
+        try
+        {
+            var args = new PutObjectArgs()
+                .WithBucket(bucketName)
+                .WithObject(objectName)
+                .WithStreamData(fileStream)
+                .WithObjectSize(fileStream.Length);
+
+            await _client.PutObjectAsync(args, cancellationToken);
+
+            _logger.LogInformation("Object: {ObjectName} saved to bucket: {BucketName}", objectName, bucketName);
+
+            return true;
+        }
+        catch (Exception exception)
+        {
+            _logger.LogError(exception, "Object: {ObjectName} don't save. Exception: {Exception}", objectName, exception.GetType().Name);
+
+            return false;
+        }
+    }
+
+    public async Task DeleteFile(string bucketName, string objectName, CancellationToken cancellationToken = default)
+    {
+        var args = new RemoveObjectArgs()
             .WithBucket(bucketName)
-            .WithObject(objectName)
-            .WithFileName(fileName);
+            .WithObject(objectName);
 
-        await _client.PutObjectAsync(args, cancellationToken)
-            .ConfigureAwait(false);
-
-        _logger.LogInformation("Object: {ObjectName} with name: {FileName} saved to bucket: {BucketName}", objectName, fileName, bucketName);
+        await _client.RemoveObjectAsync(args, cancellationToken);
     }
 
     public async Task<Uri> GetPresigned(string bucketName, string objectName, int expiry, CancellationToken cancellationToken = default)
@@ -41,5 +66,21 @@ class MinioFileStorage : IFileStorage
             .ConfigureAwait(false);
 
         return new Uri(url);
+    }
+
+    private async Task<bool> BucketExist(string bucketName, CancellationToken cancellationToken = default)
+    {
+        var args = new BucketExistsArgs()
+            .WithBucket(bucketName);
+
+        return await _client.BucketExistsAsync(args, cancellationToken);
+    }
+
+    private async Task CreateBucket(string bucketName, CancellationToken cancellationToken = default)
+    {
+        var args = new MakeBucketArgs()
+            .WithBucket(bucketName);
+
+        await _client.MakeBucketAsync(args, cancellationToken);
     }
 }

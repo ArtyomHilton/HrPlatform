@@ -17,7 +17,9 @@
 	
   <ItemGroup>
     <ProjectReference Include="..\HrPlatform.Application\HrPlatform.Application.csproj" />
+    <ProjectReference Include="..\HrPlatform.Infrastructure.FileStorage\HrPlatform.Infrastructure.FileStorage.csproj" />
     <ProjectReference Include="..\HrPlatform.Infrastructure\HrPlatform.Infrastructure.csproj" />
+    <ProjectReference Include="..\HrPlatform.MessageBus.RabbiMQ\HrPlatform.MessageBus.RabbitMQ.csproj" />
   </ItemGroup>
 
 </Project>

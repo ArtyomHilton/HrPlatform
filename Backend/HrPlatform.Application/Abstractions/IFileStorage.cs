@@ -12,8 +12,17 @@ public interface IFileStorage
     /// <param name="objectName">Имя объекта</param>
     /// <param name="fileName">Имя файла</param>
     /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+    /// <returns><see cref="Task"/> и статус сохранения</returns>
+    Task<bool> PutFile(string bucketName, string objectName, Stream fileStream, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Удалить файл из хранилища
+    /// </summary>
+    /// <param name="bucketName">Имя бакета</param>
+    /// <param name="objectName">Имя объекта</param>
+    /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
     /// <returns><see cref="Task"/></returns>
-    Task PutFile(string bucketName, string objectName, string fileName, CancellationToken cancellationToken = default);
+    Task DeleteFile(string bucketName, string objectName, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Получить временную ссылку на файл.
