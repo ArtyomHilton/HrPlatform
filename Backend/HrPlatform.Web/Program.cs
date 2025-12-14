@@ -1,7 +1,9 @@
-using Asp.Versioning;
 using HrPlatform.Web.Extensions;
+using HrPlatform.Web.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddExceptionHandler<GlobalExceptionHandlerMiddleware>();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

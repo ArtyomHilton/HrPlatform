@@ -10,7 +10,6 @@
     <ProjectReference Include="..\HrPlatform.Common\HrPlatform.Common.csproj" />
     <ProjectReference Include="..\HrPlatform.Domain\HrPlatform.Domain.csproj" />
     <ProjectReference Include="..\HrPlatform.Persistence.Postgre\HrPlatform.Persistence.Postgre.csproj" />
-    <ProjectReference Include="..\HrPlatform.MessageBus.RabbiMQ\HrPlatform.MessageBus.RabbitMQ.csproj" />
   </ItemGroup>
 
 </Project>

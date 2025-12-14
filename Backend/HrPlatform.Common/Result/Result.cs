@@ -18,9 +18,9 @@ public class Result<T>
         _result = result;
     }
 
-    public static Result<T> Success<T>(T value) => 
+    public static Result<T> Success(T value) => 
         new Result<T>(value, null, true);
 
-    public static Result<T> Failed<T>(T value, IError error) =>
+    public static Result<T> Failed(T value, IError error) =>
         new Result<T>(value, error, false);
 }

@@ -1,7 +1,7 @@
 ﻿using HrPlatform.Application.Extensions;
 using HrPlatform.Infrastructure.Extensions;
+using HrPlatform.Infrastructure.FileStorage.Extensions;
 using HrPlatform.Infrastructure.Persistence.Postgre.Extensions;
-using HrPlatform.MessageBus.RabbitMQ.Extensions;
 
 namespace HrPlatform.Web.Extensions;
 
@@ -20,6 +20,7 @@ public static class DependencyInjection
     {
         //serviceCollection.AddMessageBus(configuration);
         serviceCollection.AddInfrastructureDependencyInjection();
+        serviceCollection.AddFileStorage(configuration);
 
         return serviceCollection;
     }
