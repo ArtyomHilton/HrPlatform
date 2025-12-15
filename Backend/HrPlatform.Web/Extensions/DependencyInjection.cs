@@ -20,7 +20,7 @@ public static class DependencyInjection
     {
         //serviceCollection.AddMessageBus(configuration);
         serviceCollection.AddInfrastructureDependencyInjection();
-        serviceCollection.AddFileStorage(configuration);
+        //serviceCollection.AddFileStorage(configuration);
 
         return serviceCollection;
     }

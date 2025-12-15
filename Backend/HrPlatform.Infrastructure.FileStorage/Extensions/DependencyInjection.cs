@@ -11,7 +11,7 @@ public static class DependencyInjection
     public static IServiceCollection AddFileStorage(this IServiceCollection serviceCollection, IConfiguration configuration)
     {
         serviceCollection.Configure<MinioFileStorageOptions>(configuration.GetSection(nameof(MinioFileStorageOptions)));
-        serviceCollection.AddSingleton(sp => sp.GetRequiredService<IOptions<MinioFileStorageOptions>>());
+        serviceCollection.AddSingleton(sp => sp.GetRequiredService<IOptions<MinioFileStorageOptions>>().Value);
 
         var serviceProvider = serviceCollection.BuildServiceProvider();
 
@@ -23,7 +23,7 @@ public static class DependencyInjection
             configure.WithCredentials(settings.AccessKey, settings.SecretKey);
         });
 
-        serviceCollection.AddScoped<IFileStorage, MinioFileStorage>();
+        serviceCollection.AddSingleton<IFileStorage, MinioFileStorage>();
 
         return serviceCollection;
     }
