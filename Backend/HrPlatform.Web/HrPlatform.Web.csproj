@@ -21,5 +21,9 @@
     <ProjectReference Include="..\HrPlatform.Infrastructure\HrPlatform.Infrastructure.csproj" />
     <ProjectReference Include="..\HrPlatform.MessageBus.RabbiMQ\HrPlatform.MessageBus.RabbitMQ.csproj" />
   </ItemGroup>
+	
+  <ItemGroup>
+    <Folder Include="Validators\" />
+  </ItemGroup>
 
 </Project>
