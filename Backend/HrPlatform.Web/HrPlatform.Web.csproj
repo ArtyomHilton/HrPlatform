@@ -7,6 +7,8 @@
   <ItemGroup>
     <PackageReference Include="Asp.Versioning.Http" />
     <PackageReference Include="Asp.Versioning.Mvc.ApiExplorer" />
+    <PackageReference Include="FluentValidation" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design">
       <PrivateAssets>all</PrivateAssets>
@@ -20,10 +22,6 @@
     <ProjectReference Include="..\HrPlatform.Infrastructure.FileStorage\HrPlatform.Infrastructure.FileStorage.csproj" />
     <ProjectReference Include="..\HrPlatform.Infrastructure\HrPlatform.Infrastructure.csproj" />
     <ProjectReference Include="..\HrPlatform.MessageBus.RabbiMQ\HrPlatform.MessageBus.RabbitMQ.csproj" />
-  </ItemGroup>
-	
-  <ItemGroup>
-    <Folder Include="Validators\" />
   </ItemGroup>
 
 </Project>

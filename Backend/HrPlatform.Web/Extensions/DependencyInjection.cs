@@ -2,9 +2,7 @@
 using FluentValidation;
 using HrPlatform.Application.Extensions;
 using HrPlatform.Infrastructure.Extensions;
-using HrPlatform.Infrastructure.FileStorage.Extensions;
 using HrPlatform.Infrastructure.Persistence.Postgre.Extensions;
-using HrPlatform.Web.Validators;
 
 namespace HrPlatform.Web.Extensions;
 

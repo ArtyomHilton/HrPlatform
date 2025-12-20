@@ -1,6 +1,6 @@
 ﻿using HrPlatform.Domain.Entities;
 
-namespace HrPlatform.Application.UseCases.UserUseCases.RegistrationUseCase;
+namespace HrPlatform.Application.Models;
 
 /// <summary>
 /// Модель регистрации пользователя

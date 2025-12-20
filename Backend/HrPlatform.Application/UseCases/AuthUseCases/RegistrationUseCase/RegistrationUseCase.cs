@@ -1,8 +1,9 @@
 ﻿using HrPlatform.Application.Abstractions;
+using HrPlatform.Application.Models;
 using HrPlatform.Domain.Entities;
 using HrPlatform.Persistence.Postgre.Context;
 
-namespace HrPlatform.Application.UseCases.UserUseCases.RegistrationUseCase;
+namespace HrPlatform.Application.UseCases.AuthUseCases.RegistrationUseCase;
 
 class RegistrationUseCase(HrPlatformDbContext context, IPasswordHashedService hashedService) : IRegistrationUseCase
 {

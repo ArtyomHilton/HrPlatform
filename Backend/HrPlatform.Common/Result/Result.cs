@@ -1,26 +1,26 @@
-﻿namespace HrPlatform.Common.Result;
+﻿using HrPlatform.Common.Result.Errors;
+
+namespace HrPlatform.Common.Result;
 
 public class Result<T>
 {
-    private bool _result { get; set; }
-
+    private bool _result { get; init; }
     public bool IsSuccess => _result;
     public bool IsFailed => !_result;
 
-    public T Value { get; init; }
+    public ErrorBase? Error { get; init; }
+    public T? Value { get; init; }
 
-    public IError? Error { get; init; }
-
-    private Result(T value, IError? error, bool result)
-    {
-        Error = error;
+    private Result(T? value, ErrorBase? error, bool result)
+    {   
         Value = value;
         _result = result;
+        Error = error;
     }
 
     public static Result<T> Success(T value) => 
-        new Result<T>(value, null, true);
+        new Result<T>(value, default, true);
 
-    public static Result<T> Failed(T value, IError error) =>
-        new Result<T>(value, error, false);
+    public static Result<T> Failed(ErrorBase error) =>
+        new Result<T>(default, error, false);
 }

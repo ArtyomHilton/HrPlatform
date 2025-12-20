@@ -1,4 +1,6 @@
-﻿namespace HrPlatform.Application.UseCases.UserUseCases.RegistrationUseCase;
+﻿using HrPlatform.Application.Models;
+
+namespace HrPlatform.Application.UseCases.AuthUseCases.RegistrationUseCase;
 
 /// <summary>
 /// Регистрация пользователя
