@@ -1,4 +1,5 @@
-﻿using HrPlatform.Application.UseCases.UserUseCases.RegistrationUseCase;
+﻿using HrPlatform.Application.UseCases.AuthUseCases.LoginUseCase;
+using HrPlatform.Application.UseCases.AuthUseCases.RegistrationUseCase;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace HrPlatform.Application.Extensions;
@@ -15,6 +16,7 @@ public static class DependencyInjection
     static IServiceCollection AddUseCases(this IServiceCollection serviceCollection)
     {
         serviceCollection.AddScoped<IRegistrationUseCase, RegistrationUseCase>();
+        serviceCollection.AddScoped<ILoginUseCase, LoginUseCase>();
 
         return serviceCollection;
     }

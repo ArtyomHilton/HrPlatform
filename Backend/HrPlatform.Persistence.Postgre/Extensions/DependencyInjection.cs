@@ -4,6 +4,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Microsoft.EntityFrameworkCore;
+using HrPlatform.Persistence.Postgre.Abstractions;
+using HrPlatform.Persistence.Postgre.Repositories;
 
 namespace HrPlatform.Infrastructure.Persistence.Postgre.Extensions;
 
@@ -35,4 +37,14 @@ public static class DependencyInjection
 
         return serviceCollection;
     }
+
+    /// <summary>
+    /// Регистриуем репозитории
+    /// </summary>
+    /// <param name="serviceCollection"><see cref="IServiceCollection"/></param>
+    /// <returns><see cref="IServiceCollection"/></returns>
+    public static IServiceCollection AddRepositories(this IServiceCollection serviceCollection) =>
+        serviceCollection
+            .AddScoped<IRegisterUserRepository, RegisterUserRepository>()
+            .AddScoped<ILoginUserRepository, LoginUserRepository>();
 }

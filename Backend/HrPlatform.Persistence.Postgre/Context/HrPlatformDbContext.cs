@@ -24,4 +24,5 @@ public class HrPlatformDbContext : DbContext
     public DbSet<Role> Roles => Set<Role>();
     public DbSet<UserRole> UserRoles => Set<UserRole>();
     public DbSet<Permission> Permissions => Set<Permission>();
+    public DbSet<Candidate> Candidates => Set<Candidate>();
 }

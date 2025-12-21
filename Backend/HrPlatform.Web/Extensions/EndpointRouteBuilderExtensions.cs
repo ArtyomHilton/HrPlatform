@@ -6,7 +6,7 @@ public static class EndpointRouteBuilderExtensions
 {
     public static IEndpointRouteBuilder MapEndpoints(this IEndpointRouteBuilder builder)
     {
-        builder.MapUserEndpoints();
+        builder.MapAuthEndpoints();
 
         return builder;
     }

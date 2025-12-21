@@ -4,6 +4,9 @@ using Npgsql;
 
 namespace HrPlatform.Web.Middleware;
 
+/// <summary>
+/// глобальный обработчик исключений
+/// </summary>
 public class GlobalExceptionHandlerMiddleware : IExceptionHandler
 {
     private readonly ILogger<GlobalExceptionHandlerMiddleware> _logger;
