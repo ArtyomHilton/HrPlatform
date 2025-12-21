@@ -10,6 +10,7 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddDependencyInjection(this IServiceCollection serviceCollection, IConfiguration configuration)
     {
+        serviceCollection.AddRepositories();
         serviceCollection.AddServices(configuration);
         serviceCollection.AddContext(configuration);
         serviceCollection.AddValidators();

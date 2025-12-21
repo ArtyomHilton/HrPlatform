@@ -8,5 +8,5 @@ namespace HrPlatform.Application.UseCases.AuthUseCases.LoginUseCase;
 /// </summary>
 public interface ILoginUseCase
 {
-    Task<Result<UserLoginModel>> Execute(LoginModel model, CancellationToken cancellationToken = default);
+    Task<Result<LoginResponseModel>> Execute(LoginModel model, CancellationToken cancellationToken = default);
 }

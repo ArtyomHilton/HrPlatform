@@ -18,6 +18,12 @@ public static class AuthEndpoints
             .Produces(StatusCodes.Status204NoContent)
             .WithDescription("Регистрация пользователя");
 
+        mapGroup.MapPost("login", Login)
+            .Produces(StatusCodes.Status200OK)
+            .Produces(StatusCodes.Status401Unauthorized)
+            .Produces(StatusCodes.Status404NotFound)
+            .WithDescription("Авторизация");
+
         return builder;
     }
 
@@ -25,13 +31,20 @@ public static class AuthEndpoints
         [FromServices] IRegistrationUseCase useCase,
         CancellationToken cancellationToken)
     {
-        await useCase.Execute(request.ToModel(), cancellationToken);
+        var result = await useCase.Execute(request.ToModel(), cancellationToken);
+
+        if (result.IsFailed)
+        {
+            return result.Error switch
+            {
+                ErrorBase error => Results.Json(data: new ErrorResponse(error.ErrorCode, error.StatusCode), statusCode: error.StatusCode)
+            };
+        }
 
         return Results.NoContent();
     }
 
     private static async Task<IResult> Login([FromBody] LoginRequest request,
-        [FromServices] HttpContext context,
         [FromServices] ILoginUseCase useCase,
         CancellationToken cancellationToken)
     {
