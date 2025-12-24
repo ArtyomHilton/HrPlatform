@@ -1,8 +1,9 @@
-﻿using HrPlatform.Application.UseCases.AuthUseCases.LoginUseCase;
-using HrPlatform.Application.UseCases.AuthUseCases.RegistrationUseCase;
+﻿using HrPlatform.Application.UseCases.AuthUseCases.Login;
+using HrPlatform.Application.UseCases.AuthUseCases.Registration;
 using HrPlatform.Common.Result.Errors;
 using HrPlatform.Web.Contracts;
 using HrPlatform.Web.Contracts.Response;
+using HrPlatform.Web.Extensions;
 using HrPlatform.Web.Mappers;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,7 +22,6 @@ public static class AuthEndpoints
         mapGroup.MapPost("login", Login)
             .Produces(StatusCodes.Status200OK)
             .Produces(StatusCodes.Status401Unauthorized)
-            .Produces(StatusCodes.Status404NotFound)
             .WithDescription("Авторизация");
 
         return builder;
@@ -34,12 +34,7 @@ public static class AuthEndpoints
         var result = await useCase.Execute(request.ToModel(), cancellationToken);
 
         if (result.IsFailed)
-        {
-            return result.Error switch
-            {
-                ErrorBase error => Results.Json(data: new ErrorResponse(error.ErrorCode, error.StatusCode), statusCode: error.StatusCode)
-            };
-        }
+            return result.ToErrorResponse();
 
         return Results.NoContent();
     }
@@ -51,12 +46,7 @@ public static class AuthEndpoints
         var result = await useCase.Execute(request.ToModel(), cancellationToken);
 
         if (result.IsFailed)
-        {
-            return result.Error switch
-            {
-                ErrorBase error => Results.Json(data: new ErrorResponse(error.ErrorCode, error.StatusCode), statusCode: error.StatusCode)
-            };
-        }
+            return result.ToErrorResponse();
 
         return Results.Ok();
     }

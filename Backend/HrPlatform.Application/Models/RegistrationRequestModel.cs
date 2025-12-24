@@ -5,7 +5,7 @@ namespace HrPlatform.Application.Models;
 /// <summary>
 /// Модель регистрации пользователя
 /// </summary>
-public record RegistrationModel
+public record RegistrationRequestModel
 {
     /// <summary>
     /// Имя пользователя
@@ -22,14 +22,14 @@ public record RegistrationModel
     /// </summary>
     public string Email { get; set; } = null!;
 
-    public RegistrationModel(string username, string password, string email)
+    public RegistrationRequestModel(string username, string password, string email)
     {
         Username = username;
         Password = password;
         Email = email;
     }
 
-    public static explicit operator User(RegistrationModel model)
+    public static explicit operator User(RegistrationRequestModel model)
     {
         ArgumentNullException.ThrowIfNull(model);
 

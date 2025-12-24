@@ -1,8 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿namespace HrPlatform.Common.Result.Errors;
 
-namespace HrPlatform.Common.Result.Errors;
-
-public class UsernameExistError : ErrorBase
+public class UsernameExistError : BadRequestError
 {
-    public UsernameExistError() : base("UsernameExist", StatusCodes.Status400BadRequest) { }
+    public UsernameExistError() : base("UsernameExist") { }
 }

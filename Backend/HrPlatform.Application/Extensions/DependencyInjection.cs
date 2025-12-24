@@ -1,5 +1,5 @@
-﻿using HrPlatform.Application.UseCases.AuthUseCases.LoginUseCase;
-using HrPlatform.Application.UseCases.AuthUseCases.RegistrationUseCase;
+﻿using HrPlatform.Application.UseCases.AuthUseCases.Login;
+using HrPlatform.Application.UseCases.AuthUseCases.Registration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace HrPlatform.Application.Extensions;

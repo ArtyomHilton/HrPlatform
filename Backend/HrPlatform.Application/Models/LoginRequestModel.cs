@@ -5,4 +5,4 @@
 /// </summary>
 /// <param name="Email">Электронная почта</param>
 /// <param name="Password">Пароль</param>
-public record LoginModel(string Email, string Password);
+public record LoginRequestModel(string Email, string Password);
