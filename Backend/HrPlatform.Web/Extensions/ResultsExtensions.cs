@@ -12,8 +12,7 @@ public static class ResultsExtensions
         {
             NotFoundError error => Results.NotFound(error.ToProblemDetails()),
             AddUserError error => Results.BadRequest(error.ToProblemDetails()),
-            EmailExistError error => Results.BadRequest(error.ToProblemDetails()),
-            UsernameExistError error => Results.BadRequest(error.ToProblemDetails),
+            BadRequestError error => Results.BadRequest(error.ToProblemDetails()),
             UnauthorizedError => Results.Unauthorized(),
             ErrorBase error => Results.StatusCode(error.StatusCode)
         };
