@@ -4,7 +4,7 @@ using HrPlatform.Common.Result;
 using HrPlatform.Common.Result.Errors;
 using HrPlatform.Persistence.Postgre.Abstractions;
 
-namespace HrPlatform.Application.UseCases.AuthUseCases.LoginUseCase;
+namespace HrPlatform.Application.UseCases.AuthUseCases.Login;
 
 /// <summary>
 /// <inheritdoc cref="ILoginUseCase"/>
@@ -13,12 +13,12 @@ namespace HrPlatform.Application.UseCases.AuthUseCases.LoginUseCase;
 /// <param name="passwordHashedService"><see cref="IPasswordHashedService"/></param>
 class LoginUseCase(ILoginUserRepository repository, IPasswordHashedService passwordHashedService) : ILoginUseCase
 {
-    public async Task<Result<LoginResponseModel>> Execute(LoginModel model, CancellationToken cancellationToken = default)
+    public async Task<Result<LoginResponseModel>> Execute(LoginRequestModel model, CancellationToken cancellationToken = default)
     {
         var user = await repository.GetUserByEmailAsync(model.Email, cancellationToken);
 
         if ((user is null))
-            return Result<LoginResponseModel>.Failed(new UserNotFoundError());
+            return Result<LoginResponseModel>.Failed(new UnauthorizedError());
 
         if (!passwordHashedService.Verify(user.PasswordHash, model.Password))
             return Result<LoginResponseModel>.Failed(new UnauthorizedError());

@@ -8,9 +8,9 @@ namespace HrPlatform.Web.Mappers;
 /// </summary>
 public static class AuthMappers
 {
-    public static RegistrationModel ToModel(this RegistrationRequest request) =>
-        new RegistrationModel(request.Username, request.Password, request.Email);
+    public static RegistrationRequestModel ToModel(this RegistrationRequest request) =>
+        new RegistrationRequestModel(request.Username, request.Password, request.Email);
 
-    public static LoginModel ToModel(this LoginRequest request) =>
-        new LoginModel(request.Email, request.Password);
+    public static LoginRequestModel ToModel(this LoginRequest request) =>
+        new LoginRequestModel(request.Email, request.Password);
 }

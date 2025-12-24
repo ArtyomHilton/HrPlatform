@@ -6,6 +6,8 @@ using Microsoft.Extensions.Options;
 using Microsoft.EntityFrameworkCore;
 using HrPlatform.Persistence.Postgre.Abstractions;
 using HrPlatform.Persistence.Postgre.Repositories;
+using HrPlatform.Persistence.Postgre.Abstractions.RoleRepositories;
+using HrPlatform.Persistence.Postgre.Repositories.RoleRepositories;
 
 namespace HrPlatform.Infrastructure.Persistence.Postgre.Extensions;
 
@@ -46,5 +48,6 @@ public static class DependencyInjection
     public static IServiceCollection AddRepositories(this IServiceCollection serviceCollection) =>
         serviceCollection
             .AddScoped<IRegisterUserRepository, RegisterUserRepository>()
-            .AddScoped<ILoginUserRepository, LoginUserRepository>();
+            .AddScoped<ILoginUserRepository, LoginUserRepository>()
+            .AddScoped<ICreateRoleRepository, CreateRoleRepository>();
 }

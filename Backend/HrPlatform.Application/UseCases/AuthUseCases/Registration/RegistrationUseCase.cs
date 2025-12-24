@@ -5,11 +5,11 @@ using HrPlatform.Common.Result.Errors;
 using HrPlatform.Domain.Entities;
 using HrPlatform.Persistence.Postgre.Abstractions;
 
-namespace HrPlatform.Application.UseCases.AuthUseCases.RegistrationUseCase;
+namespace HrPlatform.Application.UseCases.AuthUseCases.Registration;
 
 class RegistrationUseCase(IRegisterUserRepository repository, IPasswordHashedService hashedService) : IRegistrationUseCase
 {
-    public async Task<Result<RegisterResponseModel>> Execute(RegistrationModel model, CancellationToken cancellationToken)
+    public async Task<Result<RegisterResponseModel>> Execute(RegistrationRequestModel model, CancellationToken cancellationToken)
     {
         if (await repository.IsExistEmailAsync(model.Email, cancellationToken))
             return Result<RegisterResponseModel>.Failed(new EmailExistError());

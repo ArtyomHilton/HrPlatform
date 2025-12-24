@@ -2,7 +2,7 @@
 
 namespace HrPlatform.Common.Result.Errors;
 
-public class EmailExistError : ErrorBase
+public class EmailExistError : BadRequestError
 {
-    public EmailExistError() : base("EmailExist", StatusCodes.Status400BadRequest) { }
+    public EmailExistError() : base("EmailExist") { }
 }
