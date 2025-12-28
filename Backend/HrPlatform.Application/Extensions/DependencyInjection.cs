@@ -1,5 +1,7 @@
 ﻿using HrPlatform.Application.UseCases.AuthUseCases.Login;
 using HrPlatform.Application.UseCases.AuthUseCases.Registration;
+using HrPlatform.Application.UseCases.RoleUseCases.AddPermissionForRole;
+using HrPlatform.Application.UseCases.RoleUseCases.CreateRole;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace HrPlatform.Application.Extensions;
@@ -13,11 +15,10 @@ public static class DependencyInjection
         return serviceCollection;
     }
 
-    static IServiceCollection AddUseCases(this IServiceCollection serviceCollection)
-    {
-        serviceCollection.AddScoped<IRegistrationUseCase, RegistrationUseCase>();
-        serviceCollection.AddScoped<ILoginUseCase, LoginUseCase>();
-
-        return serviceCollection;
-    }
+    static IServiceCollection AddUseCases(this IServiceCollection serviceCollection) =>
+        serviceCollection
+            .AddScoped<IRegistrationUseCase, RegistrationUseCase>()
+            .AddScoped<ILoginUseCase, LoginUseCase>()
+            .AddScoped<ICreateRoleUseCase, CreateRoleUseCase>()
+            .AddScoped<IAddPermissionForRoleUseCase, AddPermissionForRoleUseCase>();
 }

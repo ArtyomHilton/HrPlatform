@@ -6,7 +6,7 @@ namespace HrPlatform.Web.Extensions;
 
 public static class ResultsExtensions
 {
-    public static IResult ToErrorResponse<T>(this Result<T> results)
+    public static IResult ToErrorResponse(this Result results)
     {
         return results.Error switch
         {

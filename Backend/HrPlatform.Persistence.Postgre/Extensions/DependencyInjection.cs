@@ -49,5 +49,6 @@ public static class DependencyInjection
         serviceCollection
             .AddScoped<IRegisterUserRepository, RegisterUserRepository>()
             .AddScoped<ILoginUserRepository, LoginUserRepository>()
-            .AddScoped<ICreateRoleRepository, CreateRoleRepository>();
+            .AddScoped<ICreateRoleRepository, CreateRoleRepository>()
+            .AddScoped<IAddPermissionForRoleRepository, AddPermissionForRoleRepository>();
 }

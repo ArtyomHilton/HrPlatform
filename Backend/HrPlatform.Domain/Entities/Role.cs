@@ -27,6 +27,8 @@ public class Role : ITimestampEntity<int>
     /// </summary>
     public DateTime UpdatedAt { get; set; }
 
+    public ICollection<RolePermission>  RolePermissions { get; set; } = new List<RolePermission>();
+
     /// <summary>
     /// Навигационное свойство к UserRole.
     /// </summary>

@@ -12,10 +12,12 @@ public class Permission : ITimestampEntity<Guid>
 
     /// Код разрешения.
     public string Code { get; set; } = string.Empty;
-    
+
     /// <inheritdoc />
     public DateTime CreatedAt { get; set; }
 
     /// <inheritdoc />
     public DateTime UpdatedAt { get; set; }
+
+    public ICollection<RolePermission> RolePermissions { get; set; } = new List<RolePermission>();
 }
