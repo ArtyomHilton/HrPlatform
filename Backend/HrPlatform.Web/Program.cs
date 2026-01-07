@@ -1,5 +1,8 @@
+using HrPlatform.Web.Extensions;
+
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddDependencyInjection(builder.Configuration);
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
