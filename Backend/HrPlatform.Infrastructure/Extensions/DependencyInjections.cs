@@ -6,6 +6,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
+using Serilog;
+using Serilog.Events;
 
 namespace HrPlatform.Infrastructure.Extensions;
 
@@ -15,6 +17,7 @@ public static class DependencyInjections
     {
         public IServiceCollection AddInfrastructureDependencyInjection(IConfiguration configuration) =>
             serviceCollection
+                .AddSerilog()
                 .AddOptions(configuration)
                 .AddServices()
                 .AddDatabase();
@@ -39,6 +42,19 @@ public static class DependencyInjections
             serviceCollection.Configure<DatabaseOptions>(configuration.GetSection(nameof(DatabaseOptions)));
 
             serviceCollection.AddSingleton<DatabaseOptions>(sp => sp.GetRequiredService<IOptions<DatabaseOptions>>().Value);
+
+            return serviceCollection;
+        }
+
+        private IServiceCollection AddSerilog()
+        {
+            Log.Logger = new LoggerConfiguration()
+                .Enrich.WithProperty("Application", nameof(HrPlatform))
+                .WriteTo.Async(l => 
+                    l.Console(restrictedToMinimumLevel: LogEventLevel.Warning))
+                .WriteTo.Async(l => 
+                    l.File(restrictedToMinimumLevel: LogEventLevel.Error, path: "logs/log-.txt", rollingInterval: RollingInterval.Hour))
+                .CreateBootstrapLogger();
 
             return serviceCollection;
         }
