@@ -1,5 +1,8 @@
+using System.Reflection;
+using FluentValidation;
 using HrPlatform.Web.Extensions;
 using HrPlatform.Web.Middleware;
+using Microsoft.AspNetCore.Mvc;
 using Serilog;
 using Serilog.Events;
 
@@ -15,6 +18,14 @@ try
 
     var builder = WebApplication.CreateBuilder(args);
 
+    builder.Services.Configure<ApiBehaviorOptions>(options =>
+    {
+        options.SuppressModelStateInvalidFilter = true;
+        options.SuppressMapClientErrors = true;
+        options.SuppressInferBindingSourcesForParameters = true;
+    });
+
+    builder.Services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
     builder.Services.AddProblemDetails();
     builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 
