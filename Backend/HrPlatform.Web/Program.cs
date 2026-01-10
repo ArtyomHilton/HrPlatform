@@ -30,9 +30,13 @@ try
     builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 
     builder.Services.AddDependencyInjection(builder.Configuration);
+
+    builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddSwaggerGen();
 
     var app = builder.Build();
+
+    //await app.ApplyMigration();
 
     app.UseExceptionHandler();
     app.UseDeveloperExceptionPage();

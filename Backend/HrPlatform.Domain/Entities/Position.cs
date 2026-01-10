@@ -5,7 +5,7 @@ namespace HrPlatform.Domain.Entities;
 /// <summary>
 /// Должность
 /// </summary>
-public sealed class Position : TimeStampEntity
+public sealed class Position : Entity
 {
     /// <summary>
     /// Название должности

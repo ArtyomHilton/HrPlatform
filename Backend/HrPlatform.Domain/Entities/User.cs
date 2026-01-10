@@ -36,4 +36,5 @@ public sealed class User : TimeStampEntity
     /// Навигационное свойство к позиции
     /// </summary>
     public Position Position { get; set; } = new Position();
+    public ICollection<UserRole> UserRoles { get; set; } = [];
 }

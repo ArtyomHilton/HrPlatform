@@ -3,7 +3,7 @@
 /// <summary>
 /// Базовая сущность с временными метками.
 /// </summary>
-public abstract class TimeStampEntity : EntityBase
+public class TimeStampEntity : EntityBase
 {
     /// <summary>
     /// Идентификатор
